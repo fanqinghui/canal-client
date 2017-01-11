@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://canal.foundation.com/schema/canal"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:beans="http://www.springframework.org/schema/beans"
+            targetNamespace="http://canal.foundation.com/schema/canal"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:import namespace="http://www.springframework.org/schema/beans" />
+
+
+    <xsd:element name="globalInvoke">
+        <xsd:complexType>
+            <xsd:attribute name="value" type="xsd:string"/>
+            <xsd:attribute name="ref" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="bean">
+        <xsd:complexType>
+            <xsd:attribute name="ref" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:group name="limitedType">
+        <xsd:sequence>
+            <xsd:choice minOccurs="1" maxOccurs="unbounded">
+                <xsd:element ref="bean"/>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:element name="invoke">
+        <xsd:complexType>
+            <xsd:group ref="limitedType"/>
+            <xsd:attribute name="tableName" type="xsd:string" use="required"/>
+            <xsd:attribute name="database" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="tableInvoke">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="invoke"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:element name="canal-config">
+        <xsd:complexType>
+            <xsd:annotation>
+                <xsd:documentation>connect to canal.</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexContent>
+                <xsd:extension base="beans:identifiedType">
+                    <xsd:sequence>
+                        <xsd:choice minOccurs="1" maxOccurs="2">
+                            <xsd:element ref="globalInvoke"/>
+                            <xsd:element ref="tableInvoke"/>
+                        </xsd:choice>
+                    </xsd:sequence>
+                    <xsd:attribute name="destination"  use="required" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>destination</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                    <xsd:attribute name="username" default="" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>username</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                    <xsd:attribute name="password" default="" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>password</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                    <xsd:attribute name="fetchSize" default="1000" type="xsd:int">
+                        <xsd:annotation>
+                            <xsd:documentation>fetchSize</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                    <xsd:attribute name="subscribeChannel" default=".*\..*" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>subscribeChannel</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                    <xsd:attribute name="host"  use="required" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>host</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                    <xsd:attribute name="hostType" default="single">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:enumeration value="socketCluster" />
+                                <xsd:enumeration value="zkCluster" />
+                                <xsd:enumeration value="single" />
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>
