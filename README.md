@@ -10,8 +10,7 @@ canal server相当于模拟mysql数据库Master的Slave
 4. 客户端client接收到对应的insert update delete类别的消息实体对象，可以进行相应的处理
 5. 另外考虑到高可用canal sever必须配置zk当注册中心！
 6. 注意：canal适合要对数据库数据进行处理存储的情况。如果两个表结构类似，不需要做业务处理，可以考虑用otter！
-##使用
-spring配置文件配置
+##使用-spring配置文件配置
 ```
     <!--定义一个处理同步的处理类-->
       <bean id="globalCanalInvoke" class="com.xxx.canal.client.GlobalCanalInvoke"/>
