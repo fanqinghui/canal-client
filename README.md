@@ -3,10 +3,11 @@
 ##功能介绍
 阿里巴巴canal是数据库mysql同步的组件
 ##原理介绍
-canal server相当于模拟mysql数据库Master的Slave
-1. master一有binlog日志就把日志推送到slave（canal server中）
+原理相对比较简单：
+canal模拟mysql slave的交互协议，伪装自己为mysql slave，向mysql master发送dump协议,这样canal server相当于模拟mysql数据库Master的Slave
+1. mysql master收到dump请求，开始推送binary log给slave(也就是canal server)
 2. canal server 与canal client就相当于MQ 的Broker server与消费者一样。 
-3. canal server收到日志，会把binlog日志封装成消息实体，推送给订阅了此server的client
+3. canal server收到日志，会解析binary log对象(原始为byte流)封装成消息实体，推送给订阅了此server的client
 4. 客户端client接收到对应的insert update delete类别的消息实体对象，可以进行相应的处理
 5. 另外考虑到高可用canal sever必须配置zk当注册中心！
 6. 注意：canal适合要对数据库数据进行处理存储的情况。如果两个表结构类似，不需要做业务处理，可以考虑用otter！
