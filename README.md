@@ -37,3 +37,6 @@ canal模拟mysql slave的交互协议，伪装自己为mysql slave，向mysql ma
         </config:tableInvoke>
     </config:canal-config>
 ```
+
+##联系
+邮件：fanqinghui100@126.com
