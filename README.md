@@ -1,5 +1,5 @@
 # canal-client
-阿里巴巴 canal客户端封装，与spring无缝衔接，方便开发
+阿里巴巴数据同步组建canal的客户端封装，与spring无缝衔接，方便开发
 ##功能介绍
 阿里巴巴canal是数据库mysql同步的组件
 ##原理介绍
