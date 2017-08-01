@@ -4,6 +4,7 @@ import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.client.CanalConnectors;
 import com.alibaba.otter.canal.protocol.CanalEntry.*;
 import com.alibaba.otter.canal.protocol.Message;
+import com.foundation.canal.util.CanalThreadPoolExecute;
 import com.foundation.canal.config.CanalConfig;
 import com.foundation.canal.config.SingleCanalConfig;
 import com.foundation.canal.config.ZkClusterCanalConfig;
@@ -42,8 +43,8 @@ public class CustomSimpleCanalClient implements ApplicationContextAware{
     private Map<String, List<ICanalInvoke>> invokeMap;
     private LinkedBlockingQueue<Entry> customTableQueue = new LinkedBlockingQueue<Entry>();
     private CanalConfig canalConfig;
-    private static final ExecutorService threadPool = Executors.newFixedThreadPool(3);
-
+    private static final ExecutorService threadPool =new CanalThreadPoolExecute(3,3,0L, TimeUnit.MILLISECONDS,
+            new LinkedBlockingQueue<Runnable>());
     @PostConstruct
     public void init() {
         initInvoke();
