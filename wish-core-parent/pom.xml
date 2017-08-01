@@ -201,11 +201,7 @@
             </dependency>
 
             <!-- SECURITY end -->
-            <!-- <dependency>
-                 <groupId>org.sitemesh</groupId>
-                 <artifactId>sitemesh</artifactId>
-                 <version>${sitemesh3.version}</version>
-             </dependency>-->
+      
             <dependency>
                 <groupId>opensymphony</groupId>
                 <artifactId>sitemesh</artifactId>
