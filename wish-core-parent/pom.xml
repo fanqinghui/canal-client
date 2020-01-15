@@ -64,7 +64,7 @@
         <encache.version>2.6.11</encache.version>
         <ehcache-web.version>2.0.4</ehcache-web.version>
         <!--mq-->
-        <spring.rabbit.version>1.6.0.RELEASE</spring.rabbit.version>
+        <spring.rabbit.version>2.2.2.RELEASE</spring.rabbit.version>
         <rabbitmq.version>3.5.4</rabbitmq.version>
         <!--soa-->
         <dubbo.version>2.5.3</dubbo.version>
