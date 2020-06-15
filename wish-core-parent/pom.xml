@@ -29,7 +29,7 @@
         <!--security-->
         <aspectj.version>1.7.4</aspectj.version>
         <sitemesh2.version>2.4.2</sitemesh2.version>
-        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.3.5.Final</hibernate-validator.version>
         <velocity.version>1.7</velocity.version>
         <velocity-tools.version>2.0</velocity-tools.version>
         <!--orm相关-->
