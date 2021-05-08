@@ -25,7 +25,7 @@
 
         <spring.version>4.3.0.RELEASE</spring.version>
         <!--security-->
-        <shiro.version>1.2.3</shiro.version>
+        <shiro.version>1.6.0</shiro.version>
         <!--security-->
         <aspectj.version>1.7.4</aspectj.version>
         <sitemesh2.version>2.4.2</sitemesh2.version>
