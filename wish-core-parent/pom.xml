@@ -23,7 +23,7 @@
     <properties>
         <wish.core.version>1.0-SNAPSHOT</wish.core.version>
 
-        <spring.version>4.3.0.RELEASE</spring.version>
+        <spring.version>6.0.0</spring.version>
         <!--security-->
         <shiro.version>1.2.3</shiro.version>
         <!--security-->
